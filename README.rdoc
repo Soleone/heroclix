@@ -1,6 +1,16 @@
-= heroclix
+= Heroclix
 
-Description goes here.
+This library tries to emulate the Heroclix board game as well as possible.
+
+== Current features
+
+* Display explanation for special powers, e.g. "Attack Green" or "Damage Red"
+* Basic Hero class able to change combat values like the real world dial
+* Import combat values / dials from simple text files
+
+== TODO
+
+* Lots, basically everything
 
 == Copyright
 
