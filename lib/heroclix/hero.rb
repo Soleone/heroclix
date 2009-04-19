@@ -29,7 +29,11 @@ module Heroclix
     
     def heal!(amount = 1)
       @clicks -= amount
-      @clicks = 0 if @clicks < 0
+      reset! if @clicks < 0
+    end
+
+    def reset!
+      @clicks = 0
     end
   end
 end
