@@ -10,8 +10,6 @@ module Heroclix
     POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
     POWER_NAMES = %w[speed attack defense damage]
   
-    DATA_PATH = File.dirname(__FILE__) + '/../../data'
-    
     def self.parse_powers_file(file_content)
       # [[name, value], ...]
       hash = file_content.scan(HASH_REGEXP).inject({}) do |memo, key_value|

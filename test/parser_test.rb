@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
-class TestParser < Test::Unit::TestCase
+class ParserTest < Test::Unit::TestCase
   def setup
   end
 

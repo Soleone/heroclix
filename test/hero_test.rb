@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
-class TestHero < Test::Unit::TestCase
+class HeroTest < Test::Unit::TestCase
   def setup
     @heroes = Heroclix::Parser.all_heroes
     @spiderman = @heroes.first

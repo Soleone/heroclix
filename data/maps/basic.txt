@@ -1,0 +1,19 @@
+o oxo o o o o oxo o o
+   x           x     
+o oxo o o o o oxo o o
+   xxxxxxx xxxxx     
+o o o o o o o o o o o
+                     
+o o o o o o o o X X o
+                     
+o o o o o o o o X X o
+                     
+o + + + + o o o o o o
+                     
+o o o o o o o o o o o
+                     
+o o o o o o o o o o o
+ xxxxxxx xxx         
+oxo + + o oxo o o o o
+ x         x         
+oxo o o o oxo o o o o
