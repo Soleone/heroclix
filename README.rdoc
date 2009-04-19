@@ -1,0 +1,7 @@
+= heroclix
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Soleone. See LICENSE for details.

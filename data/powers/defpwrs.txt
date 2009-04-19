@@ -1,0 +1,22 @@
+::red
+SUPER SENSES (OPTIONAL): When this character is hit by an attack, roll one d6 before damage is dealt. On a result of 5 or 6, this character evades the attack.   
+::orange
+TOUGHNESS: Damage dealt to this character is reduced by 1.   
+::yellow
+DEFEND (OPTIONAL): Before any attack roll, any friendly character adjacent to this character may replace its defense value with this character's unmodified defense value (including a replacement defense value) for the duration of the attack.
+::lime
+COMBAT REFLEXES (OPTIONAL): Modify this character's defense value by +2 against close combat attacks. This character may choose to be knocked back by any attack from which it takes damage. Knock back damage dealt to this character is reduced to 0. 
+::green
+ENERGY SHIELD/DEFLECTION: Modify this character's defense value by +2 against ranged combat attacks.
+::blue
+BARRIER (OPTIONAL): Give this character a power action; place up to four barrier terrain markers (which are blocking terrain) on the battlefield in any square of clear terrain that is not occupied by a character and is within this character's range. Each barrier terrain marker must be placed adjacent to another barrier terrain marker created by this character. If this character has a range of 0, it can place the markers only in adjacent squares. This character must have a clear line of fire to at least one of the barrier terrain markers. These barrier markers remain in place until the beginning of your next turn or until this power is countered or lost. A soaring character can't use this power.
+::dblue
+MASTERMIND (OPTIONAL): Each time this character would be dealt damage, you may instead choose to have all the damage be dealt to a single adjacent friendly character with a lower point value than this character. If the damage resulted from an attack with knock back, the character that takes the damage is knocked back. If a character is KOd by damage dealt using this power, it is considered to have been KOd by the character that originally dealt the damage. Damage dealt by this power is not an attack.
+::purple
+WILLPOWER (OPTIONAL): This character does not take pushing damage.
+::brown
+IMPERVIOUS: When this character is dealt damage, roll one d6. On a result of 5 or 6, the damage dealt is reduced to 0. On a result of 1-4, the damage dealt is reduced by 2.
+::black
+REGENERATION (OPTIONAL): Give this character a power action. Roll one d6 and subtract 2 from the result, minimum result 0. Heal this character of damage equal to the result.
+::gray
+INVULNERABILITY: Damage dealt to this character is reduced by 2.

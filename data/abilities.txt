@@ -1,0 +1,54 @@
+::end
+::images/TransFoot.gif
+TRANSPORTER: A transporter character has special movement and combat options. A transporter follows all the normal movement and combat rules for a character with its speed mode.
+Transporters may carry other characters.
+MOVE AND ATTACK (optional): Give the character a move action when it is not adjacent to an opposing character. The character may move through squares adjacent to opposing characters. During its movement, the character may make one close combat or ranged combat attack as a free action. The character must be in a square where it can legally end its movement in order to make the attack. Modify its attack value by –2 (to a minimum attack value of 1) for the duration of the attack. The character can use the rest of its movement after making the attack.
+::end
+::images/TransWater.gif
+TRANSPORTER: A transporter character has special movement and combat options. A transporter follows all the normal movement and combat rules for a character with its speed mode.
+Transporters may carry other characters.
+MOVE AND ATTACK (optional): Give the character a move action when it is not adjacent to an opposing character. The character may move through squares adjacent to opposing characters. During its movement, the character may make one close combat or ranged combat attack as a free action. The character must be in a square where it can legally end its movement in order to make the attack. Modify its attack value by –2 (to a minimum attack value of 1) for the duration of the attack. The character can use the rest of its movement after making the attack. 
+SWIMMING: A speed mode that allows characters to treat water terrain as clear terrain for movement.
+Transporters have a special ability that allows them to move and attack in a single turn. To use the transporter ability, give a transporter a move action when it is not adjacent to an opposing character. The transporter may move through squares adjacent to opposing characters. During its 
+movement, the transporter may make one close combat or ranged combat attack as a free action. The transporter must be in a square where it can legally end its movement in order to make the attack. Reduce the attack value by 2. The transporter can use the rest of its movement after making the attack.
+::end
+::images/TransWing.gif
+TRANSPORTER: A transporter character has special movement and combat options. A transporter follows all the normal movement and combat rules for a character with its speed mode. 
+Transporters may carry other characters.
+MOVE AND ATTACK (optional): Give the character a move action when it is not adjacent to an opposing character. The character may move through squares adjacent to opposing characters. During its movement, the character may make one close combat or ranged combat attack as a free action. The character must be in a square where it can legally end its movement in order to make the attack. Modify its attack value by –2 (to a minimum attack value of 1) for the duration of the attack. The character can use the rest of its movement after making the attack.
+FLYING: A speed mode that allows characters to hover and soar. 
+Transporters have a special ability that allows them to move and attack in a single turn. To use the transporter ability, give a transporter a move action when it is not adjacent to an opposing character. The transporter may move through squares adjacent to opposing characters. During its 
+movement, the transporter may make one close combat or ranged combat attack as a free action. The transporter must be in a square where it can legally end its movement in order to make the attack. Reduce the attack value by 2. The transporter can use the rest of its movement after making the attack.
+::end
+::images/water.gif
+SWIMMING: A speed mode that allows characters to treat water terrain as clear terrain for movement.
+::end
+::images/wing.gif
+FLYING: A flying character can change flight modes when moving. Reduce the speed value of a flying character by 1 each time an action would cause it to ascend to soaring level or descend to hovering level; this is the elevation change modifier. 
+HOVERING: A hovering character floats near the ground.	 A hovering character ignores the effects of hindering terrain on movement. Hovering characters may move onto and off of elevated terrain and over outdoor blocking terrain without changing flight modes. For purposes of breaking away and close combat, a hovering character is at the same elevation as the square its base occupies. Hovering is the only flight mode that characters may use indoors. 
+SOARING: A soaring character is flying high above the battlefield. Soaring characters ignore the effects of all types of terrain and objects on movement. Soaring characters can affect only other soaring characters, giant characters, and big characters. Soaring characters are required to break away only from other soaring characters, giant characters, and big characters. Hovering characters and non-flying characters do not have to break away from soaring characters.
+::end
+::images/wfoot.gif
+GROUNDED: A speed mode without the flying or swimming abilities.
+::end
+::images/DamageRegular.gif
+STANDARD CHARACTER DAMAGE: When your character makes a successful attack, the damage dealt is equal to its damage value, modified by any powers, team abilities, and feats. The target takes that much damage, modified by any of its own powers, team abilities, and feats.
+::end
+::images/DamageBig.gif
+BIG CHARACTERS: characters are colossal, and they may have special rules that are provided with the figure. Big characters do not halve their range values when attacking soaring characters. All big characters block lines of fire to other characters. Big characters ignore the effects of hindering, elevated, and outdoor blocking terrain on movement. Big characters cannot be moved by Telekinesis.
+::end
+::images/DamageGiant.gif
+GIANT CHARACTERS: Giant characters loom over the battlefield, and they have a much longer reach than other characters. A giant character is adjacent to standard-sized characters, big characters, and other giant characters when those characters are up to two squares away for movement and close combat attack purposes, regardless of the other character’s elevation or flight mode, but an elevated giant character is not adjacent to a grounded standard-sized character. Standard-sized and big characters are adjacent to giant characters up to two squares away for movement purposes but not for close combat attack purposes. A standard-sized or big character must be within one square of a giant character to make a close combat attack against it. Characters two squares away from a giant character are considered not adjacent for ranged combat purposes.  					     
+	To determine if a character two squares away has become adjacent to a giant character, use a straight edge or draw an imaginary line from the center of the giant character’s square to the center of the target’s square. If the line crosses  blocking terrain and the target is grounded or elevated, then the characters are not adjacent, or if the line crosses elevated terrain and both characters are  grounded, then the characters are not adjacent. Otherwise the characters are adjacent.  
+	Giant characters ignore the effects of hindering, elevated, and outdoor blocking terrain on movement. Giant characters cannot be moved by Telekinesis, and they ignore other characters’ Force Blast and Plasticity.  
+	Standard-sized characters do not block line of fire to or from a giant character. Big characters and giant characters block line of fire to or from a giant character. Hindering terrain, blocking terrain, and elevated terrain affect line of fireto a giant character as normal. A grounded giant character and a grounded  standard-sized  character draw line of fire and make ranged combat attacks against each other as if they were both grounded. A giant character and a character on elevated terrain draw line of fire and make ranged combat attacks against each other as if they were both elevated. A giant character and a soaring character draw line of fire and attack  each other as if they were both soaring and using their full range values.
+::end
+::images/Defense.gif
+DEFENSE: A number that represents a character’s ability to avoid being hit
+::end
+::images/attack.gif
+ATTACK: A number that represents a character’s ability to hit opposing characters
+::end
+::images/attack-duo.gif
+DUO ATTACK (OPTIONAL): Give the character a power action to make a duo attack. It makes two separate attacks against opposing characters as free actions (making two separate attack rolls). These attacks may be close combat attacks, or ranged combat attacks with a single target. Resolve the first attack before making the second; the character’s damage value is modified by –1 for the second attack, to a minimum damage value of 1. If the character is KOd as a result of the first attack in a duo attack, the second attack is not made.
+::end

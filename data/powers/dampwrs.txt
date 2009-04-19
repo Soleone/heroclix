@@ -1,0 +1,22 @@
+::red
+RANGED COMBAT EXPERT (OPTIONAL): Give this character a power action. It makes a ranged combat attack against a single target character; modify its damage value by +2 for the attack. Ranged Combat Expert can't be used when using an object as a weapon.
+::orange
+BATTLE FURY: This character can't make ranged combat attacks, can't be targeted by Mind Control, and can't be carried.
+::yellow
+SUPPORT (OPTIONAL): Give this character a power action and make an attack roll against an adjacent target friendly character as though making a close combat attack. Neither this character nor the target may be adjacent to an opposing character; ignore all combat value modifiers for purposes of this attack. If the attack roll succeeds, roll one d6 and subtract 2 from the result, minimum result 1. The target is healed of damage equal to the result.
+::lime
+EXPLOIT WEAKNESS (OPTIONAL): Give this character a close combat action. Damage from the attack is penetrating damage.
+::green
+ENHANCEMENT (OPTIONAL): When an adjacent friendly character makes a ranged combat attack, this character modifies the adjacent friendly character's damage value by +1 once for the attack. More than one character with Enhancement can modify the same attack. This character can use this power more than once per turn.
+::blue
+PROBABILITY CONTROL (OPTIONAL): Once during your turn, this character allows you to reroll one of your dice (or die) rolls and to ignore the result of the original roll. All dice used in the original roll must be rerolled. A character using this power must be within 10 squares of the character for which the original roll was made, and have a clear line of fire to that character. A character can use this power on itself. Using the same rules, once per round during an opponent's turn, this character allows you to force that opponent to reroll one of his or her dice (or die) rolls and to ignore the result of the original roll.
+::dblue
+SHAPE CHANGE: When this character is chosen as the target of an attack, roll one d6. On a result of 5 or 6, the attack can't be made. The attacker must choose another target or be given a different action.
+::purple
+CLOSE COMBAT EXPERT (OPTIONAL): Give this character a power action. It makes a close combat attack against a single opposing target character; modify this character's damage value by + 2 for the attack. Close Combat Expert can't be used when using an object as a weapon.
+::brown
+PERPLEX (OPTIONAL): Once during your turn (but not during another action), as a free action this character modifies by +1 or –1 any combat value (including range) of a target character, including itself, until the end of the turn. A character using this power must be within 10 squares of the target and have a clear line of fire to the target. This effect ends immediately if this character loses Perplex or is KOd, or if the target is damaged or healed during this turn.
+::black
+OUTWIT (OPTIONAL): Once during your turn (but not during another action), as a free action this character counters a power possessed by a single target opposing character. Treat the target as if it does not possess the countered power. That power remains countered until the beginning of your next turn. A character using this power must be within 10 squares of the target and have a clear line of fire to the target. Instead of a power, you may choose to counter an opposing flying character's ability to soar; in this case, lower the soaring character to hovering mode. If this character loses Outwit or is KOd, the countered power returns immediately.
+::gray
+LEADERSHIP (OPTIONAL): Once at the beginning of your turn, as a free action roll one d6. On a result of 4-6, add one action to your action total for that turn. A player can gain only one action each turn with this power, even if the player has more than one character with Leadership.
