@@ -13,6 +13,7 @@ module Heroclix
     
     attr_reader :map, :x, :y
     
+    
     def initialize(map, x, y)
       @map   = map
       @x, @y = x, y
@@ -31,9 +32,9 @@ module Heroclix
       end
       x = case direction.to_s
       when /east/
-        @x - amount
-      when /west/
         @x + amount
+      when /west/
+        @x - amount
       else
         @x
       end
@@ -48,14 +49,19 @@ module Heroclix
     def adjacent_squares
       [northwest, north, northeast, west, east, southwest, south, southeast].compact
     end
-    
-    def relative
-      Position.new((@x + 1) / 2, (@y + 1) / 2)
-    end
 
+    # TODO: can this really be computed? And is it different for :terrain or :wall square?
+    def relative(mode = :terrain)
+      modifier = mode == :terrain ? -1 : 1
+      Position.new(map, (@x + modifier)/2, (@y + modifier)/2)
+    end
 
     def to_s
       "[#{@x}, #{@y}]"   
+    end
+    
+    def to_a
+      [@x, @y]
     end
   end
 end

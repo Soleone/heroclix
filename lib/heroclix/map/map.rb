@@ -9,48 +9,78 @@ module Heroclix
     
     def initialize(name, list_of_lines)
       @name = name
-
+  
+      # number of characters in first line of file defines width of map
       @total_width = list_of_lines.first.chomp.size
       @total_height = list_of_lines.size
+
       @width  = @total_width / 2
       @height = @total_height / 2
 
-      @all_rows = Array.new(@total_height, [])
-
-      # even - walls
-      @wall_x_positions    ||= Array.new(@width)  { |i| i * 2 }
-      @wall_y_positions    ||= Array.new(@height) { |i| i * 2 }
-
-      # odd - can by occupied
-      @terrain_x_positions ||= Array.new(@width)  { |i| i * 2 + 1 }
-      @terrain_y_positions ||= Array.new(@height) { |i| i * 2 + 1 }
-      
-      (0...@total_height).each do |y|
-        line = list_of_lines[y]
-        (0...@total_width).each do |x|
-          @all_rows[y] << Square.parse(line[x, 1], Position.new(self, x, y))
+      @all_rows = []
+      list_of_lines.each_with_index do |line, y|
+        @all_rows[y] = []
+        line.chomp.split(//).each_with_index do |square, x|
+          position = Position.new(self, x, y)
+          @all_rows[y] << Square.parse(square, position)
         end
       end
-
     end
 
     # only rows a Hero can enter, e.g. no walls
     def rows
-      @rows ||= @all_rows.values_at(*@terrain_y_positions).map do |row|
-        row.values_at(*@terrain_x_positions)
-      end
+      @all_rows
     end
     
      # only columns a Hero can enter, e.g. no walls
     def columns
       # TODO: transpose possibly doesn't work for rectangular (non-square) maps
-      @columns ||= rows.transpose
+      @all_columns ||= rows.transpose
     end
     
-    # get square at x and y position (starts with 1, not 0!)
+    
+    # set terrain to false to return wall rows
+    def relative_rows(square_type = :terrain)
+      @rows ||= {}
+      return @rows[square_type] if @rows[square_type] 
+      
+      @rows[square_type] = @all_rows.values_at(*relative_indexes(:rows, square_type)).map do |column|
+        column.values_at(*relative_indexes(:columns, square_type))
+      end
+    end
+    
+    def relative_columns(square_type = :terrain)
+      @columns ||= relative_rows(square_type).transpose  
+    end
+    
+    def relative_indexes(rows_or_columns = :rows, square_type = :terrain)
+      @indexes ||= {}
+      @indexes[rows_or_columns] ||= {}
+      
+      return @indexes[rows_or_columns][square_type] if @indexes[rows_or_columns][square_type]
+
+      size = rows_or_columns.to_sym == :rows ? @height : @width
+      indexes = Array.new(size) do |i|
+        i * 2 + (square_type.to_sym == :terrain ? 1 : 0)
+      end
+      @indexes[rows_or_columns][square_type] = indexes
+    end
+    
+    # square_type can be :absolute, :terrain or :border
+    def get(x, y, mode = :absolute)
+      case mode.to_sym
+      when :absolute
+        @all_rows[y][x]
+      else 
+        relative_rows(mode)[y][x]
+      end
+    end
+    
+    # get (no border) square at x and y position (starts with 1, not 0!)
     def [](x, y)
       return nil if x < 1 || x > @width || y < 1 || y > @height
-      rows[y-1][x-1]
+      
+      square = get(x, y, :terrain)
     end
   end
 end
