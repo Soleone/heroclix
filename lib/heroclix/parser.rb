@@ -9,7 +9,23 @@ module Heroclix
     
     POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
     POWER_NAMES = %w[speed attack defense damage]
+
+  public
+
+    def self.all_powers
+      @powers ||= parse_all_powers
+    end
+    
+    
+    def self.all_heroes
+      @heroes ||= parse_all_combat_values.map do |name, combat_values|
+        Hero.new(name, combat_values)
+      end
+    end
+
   
+  private
+
     def self.parse_powers_file(file_content)
       # [[name, value], ...]
       hash = file_content.scan(HASH_REGEXP).inject({}) do |memo, key_value|
@@ -34,7 +50,7 @@ module Heroclix
       end
       attributes
     end
-    
+
     def self.parse_all_powers
       powers = {}
       POWER_NAMES.each_with_index do |power, index|
@@ -43,20 +59,10 @@ module Heroclix
       end
       powers
     end
-    
-    def self.all_powers
-      @powers ||= parse_all_powers
-    end
-    
+
     def self.parse_all_combat_values
       file = "#{DATA_PATH}/combat_values.txt"
       @combat_values ||= parse_combat_values_file(File.read(file))
-    end
-    
-    def self.all_heroes
-      @heroes ||= parse_all_combat_values.map do |name, combat_values|
-        Hero.new(name, combat_values)
-      end
     end
   end
 end

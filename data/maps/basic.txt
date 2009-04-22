@@ -1,19 +1,21 @@
-o oxo o o o o oxo o o
-   x           x     
-o oxo o o o o oxo o o
-   xxxxxxx xxxxx     
-o o o o o o o o o o o
-                     
-o o o o o o o o X X o
-                     
-o o o o o o o o X X o
-                     
-o + + + + o o o o o o
-                     
-o o o o o o o o o o o
-                     
-o o o o o o o o o o o
- xxxxxxx xxx         
-oxo + + o oxo o o o o
- x         x         
-oxo o o o oxo o o o o
+....x...........x....
+.o.oxo.o.o.o.o.oxo.o.
+....x...........x....
+.o.oxo.o.o.o.o.oxo.o.
+....xxxxxx...xxxx....
+.o.o.o.o.o.o.o.o.o.o.
+.....................
+.o.o.o.o.o.o.o.o.X.X.
+..xxxxxxxxxxx........
+.oxo.o.o.o.oxo.o.X.X.
+..x..................
+.oxo.+.o.o.o.o.o.o.o.
+..x..................
+.oxo.+.o.o.o.o.o.o.o.
+..xxxxxxxxxx.........
+.o.o.o.o.o.o.o.o.o.o.
+..xxxxxx...xx....xxxx
+.oxo.+.+.o.oxo.o.o.o.
+..x.........x........
+.oxo.o.o.o.oxo.o.o.o.
+..xxxxxxxxxxx........

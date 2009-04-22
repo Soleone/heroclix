@@ -1,4 +1,4 @@
-library = %w[description combat_value power parser hero square map]
+library = %w[description combat_value power parser hero map/position map/square map/map]
 library.each do |file|
   require File.dirname(__FILE__) + "/heroclix/#{file}"
 end
