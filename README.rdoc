@@ -7,6 +7,10 @@ This library tries to emulate the Heroclix board game as well as possible.
 * Display explanation for special powers, e.g. "Attack Green" or "Damage Red"
 * Basic Hero class able to change combat values like the real world dial
 * Import combat values / dials from simple text files
+* Map implementation with different square types, e.g. map[1, 1].terrain == :hindering
+* WallSquares are implemented as "invisible squares", i.e. not returned by map[x, y]
+* Squares can get adjacent squares
+* Reading a map from a simple text format
 
 == TODO
 
