@@ -21,8 +21,7 @@ module Heroclix
       list_of_lines.each_with_index do |line, y|
         @all_rows[y] = []
         line.chomp.split(//).each_with_index do |square, x|
-          position = Position.new(self, x, y)
-          @all_rows[y] << Square.parse(square, position)
+          @all_rows[y] << Square.parse(square, self, x, y)
         end
       end
     end
@@ -53,6 +52,27 @@ module Heroclix
       @columns ||= relative_rows(square_type).transpose  
     end
     
+    # square_type can be :absolute, :terrain or :border
+    def get(x, y, mode = :absolute)
+      case mode.to_sym
+      when :absolute
+        @all_rows[y][x]
+      else 
+        relative_rows(mode)[y][x]
+      end
+    end
+    
+    # get (terrain) square at x and y position (starts with 1, not 0!)
+    # use this as high level interface
+    def [](x, y)
+      return nil if x < 1 || x > @width || y < 1 || y > @height
+      
+      square = get(x-1, y-1, :terrain)
+    end
+   
+     
+  private
+        
     def relative_indexes(rows_or_columns = :rows, square_type = :terrain)
       @indexes ||= {}
       @indexes[rows_or_columns] ||= {}
@@ -65,22 +85,7 @@ module Heroclix
       end
       @indexes[rows_or_columns][square_type] = indexes
     end
-    
-    # square_type can be :absolute, :terrain or :border
-    def get(x, y, mode = :absolute)
-      case mode.to_sym
-      when :absolute
-        @all_rows[y][x]
-      else 
-        relative_rows(mode)[y][x]
-      end
-    end
-    
-    # get (no border) square at x and y position (starts with 1, not 0!)
-    def [](x, y)
-      return nil if x < 1 || x > @width || y < 1 || y > @height
-      
-      square = get(x, y, :terrain)
-    end
+
+  
   end
 end

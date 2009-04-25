@@ -21,7 +21,7 @@ module Heroclix
 
     # Get adjacent squares (only count relative squares)
     def get(direction, amount = 1, absolute = false)
-      amount *= 2 if absolute
+      amount *= 2 unless absolute
       y = case direction.to_s
       when /north/
         @y - amount 
@@ -38,7 +38,7 @@ module Heroclix
       else
         @x
       end
-      @map[x, y]
+      @map.get(x, y, :absolute)
     end
     
     alias :above :north
