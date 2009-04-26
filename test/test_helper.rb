@@ -6,6 +6,10 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'heroclix'
 
 class Test::Unit::TestCase
+  def assert_false(object)
+    assert_block("Expected <#{object}> to be false.") { object == false }
+  end
+  
   
   def assert_terrain_array_equal(sequence, squares)
     assert_square_array_equal(sequence, squares, :terrain)

@@ -2,13 +2,12 @@ require 'iconv'
 
 module Heroclix
   module Parser
-    HASH_REGEXP = /::(\w+)\n(.*?)\.\s*\n/m
+    HASH_REGEXP = /::(\w+)\n(.*?)\.\s*$/m
     NAME_REGEXP = /(.+?)( \(OPTIONAL\))?: (.+)/
     
     COMBAT_VALUES_AND_NAMES_REGEXP = /([^\n]+)\n(([a-z0-9, ]+\n)+)/m
     
     POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
-    POWER_NAMES = %w[speed attack defense damage]
 
   public
 
@@ -26,24 +25,27 @@ module Heroclix
   
   private
 
-    def self.parse_powers_file(file_content)
+    def self.parse_powers_file(type, file_content)
       # [[name, value], ...]
       hash = file_content.scan(HASH_REGEXP).inject({}) do |memo, key_value|
-        key, value = key_value[0], key_value[1]
-        memo[key] = Power.from_array(value.scan(NAME_REGEXP).flatten)
+        color, value = key_value[0], key_value[1]
+        memo[color] = Power.from_array(type, color, value.scan(NAME_REGEXP).flatten)
         memo
       end
     end
    
+    # return Hash which maps Hero names to a Hash of CombatValue-Arrays. puh...
+    # check this example: "Spider-Man" => {:speed => [CombatValue.new(9, :blue), ...], ...}, ...
     def self.parse_combat_values_file(file_content)
-      # [["Spider-Man", "12 blue, ..."], ...]
       attributes = {}
       file_content.scan(COMBAT_VALUES_AND_NAMES_REGEXP).each do |name_and_stats|
+        # [["Spider-Man", "12 blue, ..."], ...]
         name, stats = name_and_stats[0], name_and_stats[1]
         values = {}
         stats.split("\n").each_with_index do |combat_values, index|
-          values[POWER_NAMES[index].to_sym] = combat_values.split(', ').map do |combat_value|
-            CombatValue.from_string(combat_value)
+          type = CombatValue::TYPES[index].to_sym
+          values[type] = combat_values.split(', ').map do |combat_value|
+            CombatValue.from_string(type, combat_value)
           end
         end
         attributes[name] = values
@@ -53,9 +55,9 @@ module Heroclix
 
     def self.parse_all_powers
       powers = {}
-      POWER_NAMES.each_with_index do |power, index|
+      CombatValue::TYPES.each_with_index do |type, index|
         content = File.read("#{DATA_PATH}/powers/#{POWER_FILES[index]}.txt")
-        powers[power] = Parser.parse_powers_file(content)
+        powers[type] = Parser.parse_powers_file(type, content)
       end
       powers
     end

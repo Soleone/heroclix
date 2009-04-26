@@ -9,4 +9,5 @@ unless attribute && color
   exit 0
 end
 
+# TODO: make a nice public access method for that
 p Heroclix::Parser.all_powers[attribute][color].to_s

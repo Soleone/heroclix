@@ -1,5 +1,5 @@
 Spider-Man
-6 orange, 6, 6, 5 red, 4
+9 orange, 9, 8, 8 red, 7
 12 lime, 12, 11, 12 red, 11
 17 lime, 17, 17, 18 red, 19
 2, 2, 2, 2, 1
