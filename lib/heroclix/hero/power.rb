@@ -2,6 +2,10 @@ module Heroclix
   class Power
     attr_reader :name, :text, :type, :color
 
+    def self.get(type, color)
+      DataCenter.all_powers[type.to_sym][color.to_s]
+    end
+    
     def self.from_array(type, color, array)
       name, optional, text = *array
       Power.new(type, color, name, text, optional.nil?)
@@ -18,7 +22,7 @@ module Heroclix
     end
     
     def to_s
-      "#{name}#{' (NON-OPTIONAL)' if non_optional?}: #{text} [#{type} -> #{color}}]"
+      "#{name}#{' (NON-OPTIONAL)' if non_optional?}: #{text} [#{type} -> #{color}]"
     end
   end
 end

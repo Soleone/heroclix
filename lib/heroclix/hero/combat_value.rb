@@ -27,7 +27,7 @@ module Heroclix
     end
     
     def power
-      @power ||= Parser.all_powers[type][color]
+      @power ||= Power.get(type, color)
     end
   end
 end

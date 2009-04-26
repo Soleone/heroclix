@@ -1,3 +1,5 @@
+require 'set'
+
 module Heroclix
   class Hero
     attr_reader :name, :description, :clicks
@@ -8,19 +10,19 @@ module Heroclix
     end
     
     def speed
-      @combat_values[:speed][@clicks]
+      @combat_values[:speed][clicks]
     end
     
     def attack
-      @combat_values[:attack][@clicks]
+      @combat_values[:attack][clicks]
     end
 
     def defense
-      @combat_values[:defense][@clicks]
+      @combat_values[:defense][clicks]
     end
 
     def damage
-      @combat_values[:damage][@clicks]
+      @combat_values[:damage][clicks]
     end
 
     def damage!(amount = 1)
@@ -46,6 +48,21 @@ module Heroclix
     
     def health
       max_health - clicks
+    end
+    
+    def active_powers
+      CombatValue::TYPES.map do |type| 
+        current_value = @combat_values[type][clicks]
+        Power.get(type, current_value.color)
+      end.compact
+    end
+    
+    def all_powers
+      CombatValue::TYPES.map do |type| 
+        @combat_values[type].map do |current_value|
+          Power.get(type, current_value.color)
+        end
+      end.flatten.compact.to_set
     end
   end
 end

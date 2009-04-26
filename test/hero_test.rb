@@ -4,9 +4,9 @@ class HeroTest < Test::Unit::TestCase
   include Heroclix
   
   def setup
-    @heroes = Heroclix::Parser.all_heroes
-    @spiderman = @heroes.first
-    @spiderman.reset!
+    @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
+    @start_powers = [Power.get(:speed, 'orange'), Power.get(:attack, 'lime'),Power.get(:defense, 'lime')]
+    @later_powers = [Power.get(:speed, 'red'),    Power.get(:attack, 'red'), Power.get(:defense, 'red') ]
   end
 
   def test_should_have_name
@@ -40,8 +40,22 @@ class HeroTest < Test::Unit::TestCase
   def should_have_computed_maximum_health
     assert_equal 5, @spiderman.max_health
   end
+  
   def test_should_have_correct_health_for_damage
     @spiderman.damage! 4
     assert_equal 1, @spiderman.health
+  end
+  
+  def test_should_show_active_powers_for_current_clicks
+    assert_equal @start_powers, @spiderman.active_powers
+    @spiderman.damage! 1
+    assert_equal [], @spiderman.active_powers
+    @spiderman.damage! 2
+    assert_equal @later_powers, @spiderman.active_powers
+  end
+  
+  def test_should_be_able_to_show_all_powers
+    all_powers = @start_powers + @later_powers
+    assert_equal all_powers.to_set, @spiderman.all_powers
   end
 end

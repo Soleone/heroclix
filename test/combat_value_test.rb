@@ -4,8 +4,7 @@ class CombatValueTest < Test::Unit::TestCase
   include Heroclix
   
   def setup
-    @heroes = Parser.all_heroes
-    @spiderman = @heroes.first
+    @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
   end
   
   def test_should_print_with_to_string
@@ -22,7 +21,7 @@ class CombatValueTest < Test::Unit::TestCase
   end
   
   def test_should_return_corresponding_power_if_colored
-    assert_equal Parser.all_powers[:speed]['orange'], @spiderman.speed.power
+    assert_equal DataCenter.all_powers[:speed]['orange'], @spiderman.speed.power
     assert_equal "COMBAT REFLEXES", @spiderman.defense.power.name
   end
 end

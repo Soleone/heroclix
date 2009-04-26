@@ -1,13 +1,12 @@
 require 'iconv'
 
 module Heroclix
-  module Parser
+  module DataCenter
+    POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
+
     HASH_REGEXP = /::(\w+)\n(.*?)\.\s*$/m
     NAME_REGEXP = /(.+?)( \(OPTIONAL\))?: (.+)/
-    
     COMBAT_VALUES_AND_NAMES_REGEXP = /([^\n]+)\n(([a-z0-9, ]+\n)+)/m
-    
-    POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
 
   public
 
@@ -22,6 +21,10 @@ module Heroclix
       end
     end
 
+    # returns a copy of a Hero to be used in a Game
+    def self.get_hero(name)
+      all_heroes.select { |hero| hero.name == name }.first.dup
+    end
   
   private
 
@@ -57,7 +60,7 @@ module Heroclix
       powers = {}
       CombatValue::TYPES.each_with_index do |type, index|
         content = File.read("#{DATA_PATH}/powers/#{POWER_FILES[index]}.txt")
-        powers[type] = Parser.parse_powers_file(type, content)
+        powers[type] = parse_powers_file(type, content)
       end
       powers
     end

@@ -2,8 +2,7 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class PowerTest < Test::Unit::TestCase
  def setup
-    @heroes = Heroclix::Parser.all_heroes
-    @spiderman = @heroes.first
+    @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
   end
   
   def test_should_print_with_to_string
