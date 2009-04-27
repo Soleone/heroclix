@@ -21,6 +21,8 @@ This library tries to emulate the Heroclix board game as well as possible.
 == TODO
 
 * Implement Line of Sight (probably using linear algebra)
+* Abilities for Heroes (e.g. Transporter, Flying)
+* Custom Powers (non-standard) for Heroes (for this: implement Fantastic Four)
 * Game class that holds the map, all players, and shows what actions can be done
 * Player class which controls a team and can give actions
 * Lots, basically everything
