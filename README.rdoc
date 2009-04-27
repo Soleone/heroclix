@@ -4,9 +4,15 @@ This library tries to emulate the Heroclix board game as well as possible.
 
 == Current features
 
+=== Heroes
+* Basic Hero class able to change combat values like the real world combat dial
 * Display explanation for special powers, e.g. "Attack Green" or "Damage Red"
-* Basic Hero class able to change combat values like the real world dial
 * Import combat values / dials from simple text files
+* Get active powers for current state of combat wheel (number of clicks)
+* Get maximum health and current health (will be invisible to players)
+* Heroes have names, keywords, a team, points
+
+=== Map
 * Map implementation with different square types, e.g. map[1, 1].terrain == :hindering
 * WallSquares are implemented as "invisible squares", i.e. not returned by map[x, y]
 * Squares can get adjacent squares
@@ -14,6 +20,9 @@ This library tries to emulate the Heroclix board game as well as possible.
 
 == TODO
 
+* Implement Line of Sight (probably using linear algebra)
+* Game class that holds the map, all players, and shows what actions can be done
+* Player class which controls a team and can give actions
 * Lots, basically everything
 
 == Copyright
