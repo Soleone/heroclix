@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class SquareTest < Test::Unit::TestCase
-  include Heroclix
-  
   def setup
     @map = Heroclix::Map.load('basic')
   end

@@ -1,10 +1,21 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class CombatValueTest < Test::Unit::TestCase
-  include Heroclix
-  
   def setup
     @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
+    @slow = CombatValue.new(:speed, 5, 'lime')
+    @fast = CombatValue.new(:speed, 10, nil)
+    @fast_and_red = CombatValue.new(:speed, 10, 'red')
+  end
+  
+
+  def test_should_include_comparable
+    assert @spiderman.speed.is_a?(Comparable)
+  end
+  
+  def test_should_be_comparable_by_values_ignoring_color
+    assert @fast > @slow
+    assert @fast == @fast_and_red
   end
   
   def test_should_print_with_to_string

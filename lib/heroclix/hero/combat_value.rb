@@ -1,5 +1,7 @@
 module Heroclix
   class CombatValue
+    include Comparable
+    
     TYPES = [:speed, :attack, :defense, :damage]
     SYMBOLS = %w[s a d *]
     
@@ -28,6 +30,10 @@ module Heroclix
     
     def power
       @power ||= Power.get(type, color)
+    end
+    
+    def <=>(other)
+      value <=> other.value
     end
   end
 end

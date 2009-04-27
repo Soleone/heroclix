@@ -1,12 +1,14 @@
-require 'set'
-
 module Heroclix
   class Hero
-    attr_reader :name, :description, :clicks
+    attr_reader :name, :description, :clicks, :max_health, :all_powers
     
     def initialize(name, combat_values, description = nil)
       @name, @combat_values, @description = name, combat_values, description
-      @clicks = 0  
+      @max_health = @combat_values.values.max{ |a,b| a.size <=> b.size}.size
+      @all_powers = @combat_values.values.flatten.map do |current_value|
+        Power.get(current_value.type, current_value.color)
+      end.compact.uniq.sort
+      @clicks = 0
     end
     
     def speed
@@ -39,11 +41,7 @@ module Heroclix
     end
     
     def ko?
-      CombatValue::TYPES.all? { |type| combat_values[type].nil? }
-    end
-    
-    def max_health
-      @combat_values.map{|type, values| values}.max{ |a,b| a.size <=> b.size}.size
+      CombatValue::TYPES.all? { |type| @combat_values[type][clicks].nil? }
     end
     
     def health
@@ -54,15 +52,8 @@ module Heroclix
       CombatValue::TYPES.map do |type| 
         current_value = @combat_values[type][clicks]
         Power.get(type, current_value.color)
-      end.compact
+      end.compact.sort
     end
     
-    def all_powers
-      CombatValue::TYPES.map do |type| 
-        @combat_values[type].map do |current_value|
-          Power.get(type, current_value.color)
-        end
-      end.flatten.compact.to_set
-    end
   end
 end

@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class PlayerTest < Test::Unit::TestCase
-  include Heroclix
-  
   def setup
     @map = Heroclix::Map.load('basic')
     @player = Player.new("Soleone", 200)

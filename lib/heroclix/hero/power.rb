@@ -1,5 +1,7 @@
 module Heroclix
   class Power
+    include Comparable
+    
     attr_reader :name, :text, :type, :color
 
     def self.get(type, color)
@@ -23,6 +25,14 @@ module Heroclix
     
     def to_s
       "#{name}#{' (NON-OPTIONAL)' if non_optional?}: #{text} [#{type} -> #{color}]"
+    end
+    
+    def <=>(other)
+      if type != other.type
+        CombatValue::TYPES.index(type) <=> CombatValue::TYPES.index(other.type)
+      else
+        color <=> other.color
+      end
     end
   end
 end

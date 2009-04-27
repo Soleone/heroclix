@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class HeroTest < Test::Unit::TestCase
-  include Heroclix
-  
   def setup
     @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
     @start_powers = [Power.get(:speed, 'orange'), Power.get(:attack, 'lime'),Power.get(:defense, 'lime')]
@@ -48,14 +46,21 @@ class HeroTest < Test::Unit::TestCase
   
   def test_should_show_active_powers_for_current_clicks
     assert_equal @start_powers, @spiderman.active_powers
-    @spiderman.damage! 1
-    assert_equal [], @spiderman.active_powers
     @spiderman.damage! 2
+    assert_equal [], @spiderman.active_powers
+    @spiderman.damage! 1
     assert_equal @later_powers, @spiderman.active_powers
   end
   
   def test_should_be_able_to_show_all_powers
     all_powers = @start_powers + @later_powers
-    assert_equal all_powers.to_set, @spiderman.all_powers
+    assert_equal all_powers.sort, @spiderman.all_powers
+  end
+  
+  def test_should_be_ko_when_taken_damage_equal_to_health
+    assert_false @spiderman.ko?
+    amount = @spiderman.health
+    @spiderman.damage! amount
+    assert @spiderman.ko?
   end
 end

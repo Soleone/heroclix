@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class DataCenterTest < Test::Unit::TestCase
-  include Heroclix
-  
   def setup
   end
 

@@ -6,6 +6,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'heroclix'
 
 class Test::Unit::TestCase
+  include Heroclix
+  
   def assert_false(object)
     assert_block("Expected <#{object}> to be false.") { object == false }
   end
