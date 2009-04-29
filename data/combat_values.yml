@@ -1,0 +1,19 @@
+name: Spider-Man
+  speed:   9 orange, 9 orange, 8, 8 red, 7
+  attack:  12 lime, 12, 11, 12 red, 11
+  defense: 17 lime, 17, 17, 18 red, 19
+  damage:  2, 2, 2, 2, 1
+
+name: Human Torch
+  range: 8
+  targets: 2
+  flight: 10 gray, 10 special, 8 special, 8 special, 8, 6, 6
+  attack: 10 orange, 10 orange, 9 orange, 9 orange, 8 yellow, 8 yellow, 7 yellow
+  defense: 17 special, 16 special, 16 special, 16 special, 15 green, 15 green, 14 green
+  damage: 3, 3, 2, 2, 2 red, 1 red, 1 red
+  named powers:
+    Pulse Wave: Nova Blast
+    Ranged Combat Expert: Fireballs
+  special powers:
+    Fiery Streak: "Human Torch can use Running Shot. When he does not use the Carry ability while moving, Human Torch does not have to end his movement if he entersa square adjacent tp an opposing character."
+    Flame On!: Human Torch can use Energy Shield/Deflection and Poison. When Human Torch is given a move action or power action, immediately after resolving the action, he can use Smoke Cloud as a free action, but can place hindering terrain only in squares he moved through or occupied this turn.""

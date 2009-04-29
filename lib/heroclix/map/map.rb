@@ -1,4 +1,10 @@
 module Heroclix
+  
+  # Battles are played out on maps, overlaid with a grid of 35 mm x 35 mm squares.
+  # These maps come in two different sizes 
+  #   * 3ft by 3 ft (36" by 36")
+  #   * 2ft by 3 ft (36" by 24") 
+  #   * (with the exception of the Marvel Universe Starter Map which was 13 by 13 squares)
   class Map
     attr_reader :name
     

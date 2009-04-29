@@ -44,6 +44,7 @@ module Heroclix
     # return Hash which maps Hero names to a Hash of CombatValue-Arrays. puh...
     # check this example: "Spider-Man" => {:speed => [CombatValue.new(9, :blue), ...], ...}, ...
     def self.parse_combat_values_file(file_content)
+      # TODO: return Heroes here directly instead of only the combat values
       attributes = {}
       file_content.scan(COMBAT_VALUES_AND_NAMES_REGEXP).each do |name_and_stats|
         # [["Spider-Man", "12 blue, ..."], ...]

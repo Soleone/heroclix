@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/test_helper'
 class HeroTest < Test::Unit::TestCase
   def setup
     @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
+    @humantorch = Heroclix::DataCenter.get_hero("Human Torch")
     @start_powers = [Power.get(:speed, 'orange'), Power.get(:attack, 'lime'),Power.get(:defense, 'lime')]
     @later_powers = [Power.get(:speed, 'red'),    Power.get(:attack, 'red'), Power.get(:defense, 'red') ]
   end
@@ -55,6 +56,10 @@ class HeroTest < Test::Unit::TestCase
   def test_should_be_able_to_show_all_powers
     all_powers = @start_powers + @later_powers
     assert_equal all_powers.sort, @spiderman.all_powers
+  end
+
+  def test_should_be_able_to_show_all_regular_powers_without_special_ones
+    puts @humantorch.all_powers.map { |p| p.name.to_s }
   end
   
   def test_should_be_ko_when_taken_damage_equal_to_health

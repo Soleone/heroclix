@@ -1,5 +1,6 @@
 module Heroclix
-  class Description
+  # Card holding special abilities and other metadata about the Hero
+  class Card
     attr_reader :rank, :edition, :team, :keywords
     
     def initialize(rank, edition, team, keywords = [])

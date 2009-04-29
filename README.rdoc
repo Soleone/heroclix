@@ -20,14 +20,18 @@ This library tries to emulate the Heroclix board game as well as possible.
 
 == TODO
 
+* Extend Hero serialization file (use yml!?) to support all info from Base and Card
+* Range and number of attacks in serialization file and Hero (or Base) class
 * Implement Line of Sight (probably using linear algebra)
 * Abilities for Heroes (e.g. Transporter, Flying)
 * Custom Powers (non-standard) for Heroes (for this: implement Fantastic Four)
 * Game class that holds the map, all players, and shows what actions can be done
 * Player class which controls a team and can give actions
 * Refactor: Rename DataCenter -> Parser and store information in classes
+* Rails Editor for creating Heroes and Maps
 * More...
 
 == Copyright
 
+Images and material related to HeroClix is © 2002-2008 WizKids Inc.
 Copyright (c) 2009 Soleone. See LICENSE for details.

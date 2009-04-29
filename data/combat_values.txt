@@ -3,3 +3,9 @@ Spider-Man
 12 lime, 12, 11, 12 red, 11
 17 lime, 17, 17, 18 red, 19
 2, 2, 2, 2, 1
+
+Human Torch
+flying: 10 gray, 10 special, 8 special, 8 special, 8, 6, 6
+normal: 10 orange, 10 orange, 9 orange, 9 orange, 8 yellow, 8 yellow, 7 yellow
+normal: 17 special, 16 special, 16 special, 16 special, 15 green, 15 green, 14 green
+normal: 3, 3, 2, 2, 2 red, 1 red, 1 red

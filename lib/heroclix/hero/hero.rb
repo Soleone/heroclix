@@ -1,13 +1,9 @@
 module Heroclix
   class Hero
-    attr_reader :name, :description, :clicks, :max_health, :all_powers
+    attr_reader :name, :card, :base, :clicks
     
-    def initialize(name, combat_values, description = nil)
-      @name, @combat_values, @description = name, combat_values, description
-      @max_health = @combat_values.values.max{ |a,b| a.size <=> b.size}.size
-      @all_powers = @combat_values.values.flatten.map do |current_value|
-        Power.get(current_value.type, current_value.color)
-      end.compact.uniq.sort
+    def initialize(name, combat_values, base = Base.new, card = nil)
+      @name, @combat_values, @base, @card = name, combat_values, base, card
       @clicks = 0
     end
     
@@ -43,9 +39,19 @@ module Heroclix
     def ko?
       CombatValue::TYPES.all? { |type| @combat_values[type][clicks].nil? }
     end
+
+    def max_health
+      @max_health ||= @combat_values.values.max{ |a,b| a.size <=> b.size}.size
+    end
     
     def health
       max_health - clicks
+    end
+    
+    def all_powers
+      @all_powers ||= @combat_values.values.flatten.map do |current_value|
+        Power.get(current_value.type, current_value.color)
+      end.compact.uniq.sort
     end
     
     def active_powers
