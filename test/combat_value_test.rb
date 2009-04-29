@@ -32,7 +32,13 @@ class CombatValueTest < Test::Unit::TestCase
   end
   
   def test_should_return_corresponding_power_if_colored
-    assert_equal DataCenter.all_powers[:speed]['orange'], @spiderman.speed.power
+    assert_equal Power.get(:speed, 'orange'), @spiderman.speed.power
     assert_equal "COMBAT REFLEXES", @spiderman.defense.power.name
   end
+  
+  def test_should_be_able_to_return_all_existing_colors
+    assert_equal 12, CombatValue::COLORS.size
+  end
+  
+
 end

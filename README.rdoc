@@ -25,7 +25,8 @@ This library tries to emulate the Heroclix board game as well as possible.
 * Custom Powers (non-standard) for Heroes (for this: implement Fantastic Four)
 * Game class that holds the map, all players, and shows what actions can be done
 * Player class which controls a team and can give actions
-* Lots, basically everything
+* Refactor: Rename DataCenter -> Parser and store information in classes
+* More...
 
 == Copyright
 

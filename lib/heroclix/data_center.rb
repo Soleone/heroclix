@@ -6,14 +6,18 @@ module Heroclix
 
     HASH_REGEXP = /::(\w+)\n(.*?)\.\s*$/m
     NAME_REGEXP = /(.+?)( \(OPTIONAL\))?: (.+)/
-    COMBAT_VALUES_AND_NAMES_REGEXP = /([^\n]+)\n(([a-z0-9, ]+\n)+)/m
+    COMBAT_VALUES_AND_NAMES_REGEXP = /([^\n]+)\n(([a-z0-9, ]+\n?){4})/m
 
   public
 
     def self.all_powers
-      @powers ||= parse_all_powers
+      powers = {}
+      CombatValue::TYPES.each_with_index do |type, index|
+        content = File.read("#{DATA_PATH}/powers/#{POWER_FILES[index]}.txt")
+        powers[type] = parse_powers_file(type, content)
+      end
+      powers
     end
-    
     
     def self.all_heroes
       @heroes ||= parse_all_combat_values.map do |name, combat_values|
@@ -54,15 +58,6 @@ module Heroclix
         attributes[name] = values
       end
       attributes
-    end
-
-    def self.parse_all_powers
-      powers = {}
-      CombatValue::TYPES.each_with_index do |type, index|
-        content = File.read("#{DATA_PATH}/powers/#{POWER_FILES[index]}.txt")
-        powers[type] = parse_powers_file(type, content)
-      end
-      powers
     end
 
     def self.parse_all_combat_values

@@ -10,7 +10,7 @@ EXPLOIT WEAKNESS (OPTIONAL): Give this character a close combat action. Damage f
 ENHANCEMENT (OPTIONAL): When an adjacent friendly character makes a ranged combat attack, this character modifies the adjacent friendly character's damage value by +1 once for the attack. More than one character with Enhancement can modify the same attack. This character can use this power more than once per turn.
 ::blue
 PROBABILITY CONTROL (OPTIONAL): Once during your turn, this character allows you to reroll one of your dice (or die) rolls and to ignore the result of the original roll. All dice used in the original roll must be rerolled. A character using this power must be within 10 squares of the character for which the original roll was made, and have a clear line of fire to that character. A character can use this power on itself. Using the same rules, once per round during an opponent's turn, this character allows you to force that opponent to reroll one of his or her dice (or die) rolls and to ignore the result of the original roll.
-::dblue
+::darkblue
 SHAPE CHANGE: When this character is chosen as the target of an attack, roll one d6. On a result of 5 or 6, the attack can't be made. The attacker must choose another target or be given a different action.
 ::purple
 CLOSE COMBAT EXPERT (OPTIONAL): Give this character a power action. It makes a close combat attack against a single opposing target character; modify this character's damage value by + 2 for the attack. Close Combat Expert can't be used when using an object as a weapon.
