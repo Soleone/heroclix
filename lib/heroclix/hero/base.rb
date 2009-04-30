@@ -5,11 +5,15 @@ module Heroclix
       :speed   => %w[normal flight swim normal-transport flight-transport swim-transport],
       :attack  => %w[normal duo sharpshooter],
       :defense => %w[normal indomitable],
-      :damage  => %w[normal giant colossal],
+      :damage  => %w[normal giant colossal]
     }
     
     attr_reader :range, :targets, :symbols, :abilities
-
+    
+    # corresponding category for combat symbol (e.g. flight => speed)
+    def self.type_for_combat_symbol(name)
+      SYMBOLS.find { |type, symbols| symbols.include?(name) }.first
+    end
     
     def initialize(range = 0, targets = 1, symbols = nil)
       @range, @targets = range, targets
@@ -28,6 +32,8 @@ module Heroclix
         abilities << name.split('-').first
       end
       abilities.compact.map { |name| CombatAbility.get(name) }
-    end     
+    end
+    
+    
   end
 end

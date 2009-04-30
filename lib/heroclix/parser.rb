@@ -1,12 +1,14 @@
 require 'iconv'
 
 module Heroclix
-  module DataCenter
+  module Parser
     POWER_FILES = %w[movpwrs attpwrs defpwrs dampwrs]
 
     HASH_REGEXP = /::(\w+)\n(.*?)\.\s*$/m
     NAME_REGEXP = /(.+?)( \(OPTIONAL\))?: (.+)/
-    COMBAT_VALUES_AND_NAMES_REGEXP = /([^\n]+)\n(([a-z0-9, ]+\n?){4})/m
+    # looks like: name \n combatvalues{4} \n combatsymbols
+    HEROES_REGEXP = /(.+?)\n\n+/m
+
 
   public
 
@@ -20,22 +22,16 @@ module Heroclix
     end
     
     def self.all_heroes
-      @heroes ||= parse_all_combat_values.map do |name, combat_values|
-        Hero.new(name, combat_values)
-      end
+      file = "#{DATA_PATH}/heroes.txt"
+      parse_heroes_file(File.read(file))
     end
 
-    # returns a copy of a Hero to be used in a Game
-    def self.get_hero(name)
-      all_heroes.select { |hero| hero.name == name }.first.dup
-    end
-  
   private
 
     def self.parse_powers_file(type, file_content)
       # [[name, value], ...]
       hash = file_content.scan(HASH_REGEXP).inject({}) do |memo, key_value|
-        color, value = key_value[0], key_value[1]
+        color, value = key_value
         memo[color] = Power.from_array(type, color, value.scan(NAME_REGEXP).flatten)
         memo
       end
@@ -43,27 +39,38 @@ module Heroclix
    
     # return Hash which maps Hero names to a Hash of CombatValue-Arrays. puh...
     # check this example: "Spider-Man" => {:speed => [CombatValue.new(9, :blue), ...], ...}, ...
-    def self.parse_combat_values_file(file_content)
+    def self.parse_heroes_file(file_content)
       # TODO: return Heroes here directly instead of only the combat values
-      attributes = {}
-      file_content.scan(COMBAT_VALUES_AND_NAMES_REGEXP).each do |name_and_stats|
-        # [["Spider-Man", "12 blue, ..."], ...]
-        name, stats = name_and_stats[0], name_and_stats[1]
+      heroes = []
+      file_content.split("\n\n").each do |name_stats_and_abilities|
+        # [["Spider-Man", "12 blue, ...", "flight, sharpshooter"], ...]
+        hero_array = name_stats_and_abilities.split("\n")
+        name, stats, combat_symbols = hero_array[0], hero_array[1..4], hero_array[5]
         values = {}
-        stats.split("\n").each_with_index do |combat_values, index|
+        stats.each_with_index do |combat_values, index|
           type = CombatValue::TYPES[index].to_sym
           values[type] = combat_values.split(', ').map do |combat_value|
             CombatValue.from_string(type, combat_value)
           end
         end
-        attributes[name] = values
+        heroes << Hero.new(name, values, parse_base(combat_symbols))
       end
-      attributes
+      heroes
     end
 
-    def self.parse_all_combat_values
-      file = "#{DATA_PATH}/combat_values.txt"
-      @combat_values ||= parse_combat_values_file(File.read(file))
+    def self.parse_base(combat_symbols)
+      symbols = {}
+      range, range_targets = 0, 1
+
+      combat_symbols.split(', ').each do |symbol|
+        name, value = symbol.split(' ')
+        if value
+          name == 'range' ? range = value.to_i : range_targets = value.to_i
+        else
+          symbols[Base.type_for_combat_symbol(name)] = name         
+        end
+      end
+      Base.new(range, range_targets, symbols)
     end
   end
 end

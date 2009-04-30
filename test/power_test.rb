@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/test_helper'
 class PowerTest < Test::Unit::TestCase
   
  def setup
-    @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
+    @spiderman = Hero.get("Spider-Man")
     @unsorted_powers = [Power.get(:speed, 'lime'), Power.get(:defense, 'lime'), Power.get(:attack, 'lime'), Power.get(:speed, 'orange')]
     @flurry = Power.get(:speed, 'red')
   end

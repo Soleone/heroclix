@@ -51,7 +51,7 @@ module Heroclix
 
     # Returns a hash which maps type => { color => power }
     def self.power_by_type_and_color
-      @powers_by_type_and_color ||= DataCenter.all_powers
+      @powers_by_type_and_color ||= Parser.all_powers
     end
 
   end

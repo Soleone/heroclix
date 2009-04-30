@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class CombatValueTest < Test::Unit::TestCase
   def setup
-    @spiderman = Heroclix::DataCenter.get_hero("Spider-Man")
+    @spiderman = Hero.get("Spider-Man")
     @slow = CombatValue.new(:speed, 5, 'lime')
     @fast = CombatValue.new(:speed, 10, nil)
     @fast_and_red = CombatValue.new(:speed, 10, 'red')

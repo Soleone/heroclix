@@ -6,7 +6,7 @@ module Heroclix
   class CombatAbility
     attr_reader :name, :text
     
-    def all
+    def self.all
       # TODO: initialize all abilities from Parser or somewhere
       @all_combat_abilities ||= []      
     end
@@ -14,7 +14,8 @@ module Heroclix
     def self.get(name)
       all.select{|ability| ability.name == name}.first
     end
-      
+    
+  
     def initialize(name, text = nil)
       # TODO: maybe abstract validation somewhere in a small DSL (too much code here)
       unless (all = ALL.values.flatten).include?(name)
